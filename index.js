@@ -38,6 +38,12 @@ async function invokeAction({ action, id, name, email, phone }) {
   }
 }
 
-invokeAction(argv)
-  .then((data) => console.table(data))
-  .catch((error) => console.error(error));
+const start = async (argv) => {
+  try {
+    await invokeAction(argv).then((data) => console.table(data));
+  } catch {
+    (error) => console.error(error);
+  }
+};
+
+start(argv);
